@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Array_and_List_Algorithms_3._0_Revers_metod_
+namespace Reverse_Array_In_place
 {
     class Program
     {
@@ -12,13 +12,10 @@ namespace Array_and_List_Algorithms_3._0_Revers_metod_
         {
             int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-            // arr = arr.Reverse().ToArray();// командата връща резултат, а не променя масива, 
-            //                               //за това се налага резултата да се запише в масив
-            int[] newArr = arr.Select(e => e + 2).ToArray(); // добавя към всеки елемент от масива +2
             int left = 0;
             int right = arr.Length - 1;
 
-            while (left<(arr.Length/2))
+            while (left < (arr.Length / 2))
             {
                 int medial = arr[left];
                 arr[left] = arr[right];
