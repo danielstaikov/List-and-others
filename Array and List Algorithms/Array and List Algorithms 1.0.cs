@@ -12,8 +12,8 @@ namespace Array_and_List_Algorithms
         {
             int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
             int numberToFind = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < arr.Length; i++)
+            
+            for (int i = 0; i < arr.Length; i++) // list.Conains-like
             {
                 if (arr[i]==numberToFind)
                 {
@@ -22,6 +22,7 @@ namespace Array_and_List_Algorithms
                 }
             }
             Console.WriteLine("Ellement wasn't found");
+           
         }
     }
 }
