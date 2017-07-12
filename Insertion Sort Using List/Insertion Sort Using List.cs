@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Array_and_List_Algorithms_6._0_List_Algorithms_
+namespace Insertion_Sort_Using_List
 {
     class Program
     {
-        static void Main(string[] args) // not working ?
+        static void Main(string[] args)
         {
             List<int> list = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
 
-            List<int> resultList =  InsertionSort(list);
+            List<int> resultList = InsertionSort(list);
 
             Console.WriteLine(string.Join(" ", resultList));
         }
@@ -43,6 +43,5 @@ namespace Array_and_List_Algorithms_6._0_List_Algorithms_
             }
             return resultList;
         }
-
     }
 }
