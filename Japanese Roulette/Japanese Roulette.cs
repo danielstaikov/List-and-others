@@ -8,22 +8,24 @@ namespace Japanese_Roulette
 {
     class Program
     {
+        static int cylinderLenghtVar = 0;
         static void Main(string[] args)
         {
             int[] cylinder = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
             string[] rotation = Console.ReadLine().Split(' ').ToArray();
             int index = 2;
+            cylinderLenghtVar = cylinder.Length;
             bool isSurvive = true;
             for (int i = 0; i < rotation.Length; i++)
             {
-                RotatingCylinder(rotation[i], rotation.Length, ref index); //въртя цилиндъра
-                if (cylinder[index]==1)// сравнявам с индекса от cylinder[]
+                index = RotatingCylinder(rotation[i], cylinder.Length, index);//въртя цилиндъра
+                if (cylinder[index] ==1)// сравнявам с индекса от cylinder[]
                 {
                     Console.WriteLine($"Game over! Player {i} is dead.");
                     isSurvive = false;
                     break;
                 }
-                index++;
+                index--;
             }
             if (isSurvive)
             {
@@ -31,7 +33,7 @@ namespace Japanese_Roulette
             }
 
         }
-        static void RotatingCylinder(string rotation, int length, ref int index)
+        static int RotatingCylinder(string rotation, int length, int index)
         {
             string[] shot = rotation.Split(',').ToArray();
             int turn = int.Parse(shot[0]);
@@ -40,20 +42,20 @@ namespace Japanese_Roulette
                 do
                 {
                     turn = turn - length;
-                } while (turn <= length); // врътката е с дължина по-малка или равна на масива
+                } while (turn > length); // врътката е с дължина по-малка или равна на масива
             }
 
             if (shot[1]== "Right")
             {
-                RotatingRight(turn, index); //въртя цилиндъра и броя индекса
+                index = RotatingRight(turn, index); //въртя цилиндъра и броя индекса
             }
             else
             {
-                RotatingLeft(turn, index); //въртя цилиндъра и броя индекса
+                index = RotatingLeft(turn, index); //въртя цилиндъра и броя индекса
             }
 
 
-
+            return index;
 
         }
         static int RotatingRight(int turn, int index)
@@ -77,9 +79,9 @@ namespace Japanese_Roulette
         {
             for (int i = 0; i < turn; i++)
             {
-                if (index <= 0)
+                if (index >= cylinderLenghtVar-1)
                 {
-                    index = index + 5;
+                    index = index - 5;
                 }
                 else
                 {
